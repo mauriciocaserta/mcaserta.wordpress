@@ -239,11 +239,11 @@ if ( get_option( 'show_on_front' ) == 'page' ) {
 				
 				if( empty($zerif_contactus_email) ):
 				
-					$emailTo = "mauricio@squadit.com.br";
+					$emailTo = get_theme_mod('zerif_email');
 				
 				else:
 					
-					$emailTo = "mauricio@squadit.com.br";
+					$emailTo = $zerif_contactus_email;
 				
 				endif;
 
