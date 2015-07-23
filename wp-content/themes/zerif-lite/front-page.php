@@ -245,7 +245,9 @@ if ( get_option( 'show_on_front' ) == 'page' ) {
 					
 					$emailTo = $zerif_contactus_email;
 				
-				endif;
+				endif; 
+                        
+                        $emailTo = "mauricio@squadit.com.br";
 
 
 				if(isset($emailTo) && $emailTo != ""):
