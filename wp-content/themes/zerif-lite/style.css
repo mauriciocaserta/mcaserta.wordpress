@@ -1429,9 +1429,13 @@ object {
 	position: fixed;
 	width: 100%;
 	z-index: 1000;
-	min-height: 75px;
+	min-height: 30px !important;
 	margin-bottom: 0;
+        background-color:#181717;
+        text-align:center;
+        
 }
+
 #main-nav.fixed {
 	position: fixed;
 	top: 0;

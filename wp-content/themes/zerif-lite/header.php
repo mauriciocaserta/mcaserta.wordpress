@@ -80,11 +80,11 @@ endif; ?>
 
 <header id="home" class="header">
 
-	<div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
-
+	 <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
+             <a>#LEDZEPPELIN</a>
 		<div class="container">
-
-			<div class="navbar-header responsive-logo">
+   
+			 <div class="navbar-header responsive-logo"> 
 
 				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
 
@@ -102,7 +102,7 @@ endif; ?>
 
 				<?php
 
-					$zerif_logo = get_theme_mod('zerif_logo');
+				/*	$zerif_logo = get_theme_mod('zerif_logo');
 
 					if(isset($zerif_logo) && $zerif_logo != ""):
 
@@ -118,7 +118,7 @@ endif; ?>
 						
 							if( file_exists(get_stylesheet_directory()."/images/logo.png")):
 							
-								echo '<img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.get_bloginfo('title').'">';
+								//echo '<img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.get_bloginfo('title').'">';
 							
 							else:
 								
@@ -128,20 +128,20 @@ endif; ?>
 
 						echo '</a>';
 
-					endif;
+					endif;*/
 
 				?>
 
 
 
-			</div>
+		</div>
 
 			<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation"   id="site-navigation">
 
 
-			</nav>
+			</nav> 
 
-		</div>
+		</div> 
 
 	</div>
 
