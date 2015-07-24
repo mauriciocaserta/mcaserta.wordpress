@@ -439,25 +439,25 @@ if (get_option('show_on_front') == 'page') {
 
                             <div class="col-lg-4 col-sm-4" data-scrollreveal="enter left after 0s over 1s">
 
-                                <input required="required" type="text" name="myname" placeholder="Your Name" class="form-control input-box" value="<?php if (isset($_POST['myname'])) echo esc_attr($_POST['myname']); ?>">
+                                <input required="required" id="myname" type="text" name="myname" placeholder="Your Name" class="form-control input-box" value="<?php if (isset($_POST['myname'])) echo esc_attr($_POST['myname']); ?>">
 
                             </div>
 
                             <div class="col-lg-4 col-sm-4" data-scrollreveal="enter left after 0s over 1s">
 
-                                <input required="required" type="email" name="myemail" placeholder="Your Email" class="form-control input-box" value="<?php if (isset($_POST['myemail'])) echo is_email($_POST['myemail']) ? $_POST['myemail'] : ""; ?>">
+                                <input required="required" id="myemail" type="email" name="myemail" placeholder="Your Email" class="form-control input-box" value="<?php if (isset($_POST['myemail'])) echo is_email($_POST['myemail']) ? $_POST['myemail'] : ""; ?>">
 
                             </div>
 
                             <div class="col-lg-4 col-sm-4" data-scrollreveal="enter left after 0s over 1s">
 
-                                <input required="required" type="text" name="mysubject" placeholder="Subject" class="form-control input-box" value="<?php if (isset($_POST['mysubject'])) echo esc_attr($_POST['mysubject']); ?>">
+                                <input required="required" id="mysubject" type="text" name="mysubject" placeholder="Subject" class="form-control input-box" value="<?php if (isset($_POST['mysubject'])) echo esc_attr($_POST['mysubject']); ?>">
 
                             </div>
 
                             <div class="col-lg-12 col-sm-12" data-scrollreveal="enter right after 0s over 1s">
 
-                                <textarea name="mymessage" class="form-control textarea-box" placeholder="Your Message"><?php
+                                <textarea name="mymessage" id="mymessage" class="form-control textarea-box" placeholder="Your Message"><?php
                                     if (isset($_POST['mymessage'])) {
                                         echo esc_html($_POST['mymessage']);
                                     }
@@ -468,7 +468,7 @@ if (get_option('show_on_front') == 'page') {
                             <?php
                             $zerif_contactus_button_label = get_theme_mod('zerif_contactus_button_label', 'Send Message');
                             if (!empty($zerif_contactus_button_label)):
-                                echo '<button class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">' . $zerif_contactus_button_label . '</button>';
+                                echo '<button name="enviar" id="enviar" class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">' . $zerif_contactus_button_label . '</button>';
 
                             endif;
                             ?>
@@ -484,7 +484,6 @@ if (get_option('show_on_front') == 'page') {
 
                             endif;
                             ?>
-
                         </form>
 
                     </div>
@@ -493,7 +492,37 @@ if (get_option('show_on_front') == 'page') {
 
                 </div> <!-- / END CONTAINER -->
 
-            </section> <!-- / END CONTACT US SECTION-->
+<script>
+    $("#enviar").click(function () {
+
+        $.ajax({
+            url: "/services/gravaContato.php",
+            dataType: "json",
+            type: "POST",
+            data: {'nome': $('#myname').val(),
+                'email': $('#myemail').val(),
+                'assunto': $('#mysubject').val(),
+                'mensagem': $('#mymessage').val()
+            },
+            success: function (data) {
+                // converter retorno para um objeto Json
+                var rJson = JSON.parse(data);
+                // verificar se o serviço retorna true
+                if (rJson.retorno === true) {
+                    //alert('Inserido com Sucesso!');
+                } else {
+                   // alert('Não Inserido!');
+                }
+            },
+            error: function (data) {
+                alert('Deu Treta');
+            }
+
+        });
+
+    });
+</script>
+            </section> <!-- / END CONTACT US SECTION-->       
             <?php
         endif;
     }

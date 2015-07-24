@@ -30,6 +30,8 @@
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <!--[if lt IE 9]>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
 <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/ie.css" type="text/css">
@@ -97,42 +99,6 @@ endif; ?>
 				<span class="icon-bar"></span>
 
 				</button>
-
-
-
-				<?php
-
-				/*	$zerif_logo = get_theme_mod('zerif_logo');
-
-					if(isset($zerif_logo) && $zerif_logo != ""):
-
-						echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-
-							echo '<img src="'.$zerif_logo.'" alt="'.get_bloginfo('title').'">';
-
-						echo '</a>';
-
-					else:
-
-						echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-						
-							if( file_exists(get_stylesheet_directory()."/images/logo.png")):
-							
-								//echo '<img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.get_bloginfo('title').'">';
-							
-							else:
-								
-								echo '<img src="'.get_template_directory_uri().'/images/logo.png" alt="'.get_bloginfo('title').'">';
-								
-							endif;
-
-						echo '</a>';
-
-					endif;*/
-
-				?>
-
-
 
 		</div>
 
