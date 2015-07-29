@@ -397,7 +397,7 @@ if (get_option('show_on_front') == 'page') {
                         if (isset($emailSent) && $emailSent == true) :
 
                             echo '<div class="notification success"><p>' . __('Thanks, your email was sent successfully!', 'zerif-lite') . '</p></div>';
-
+                                
                         elseif (isset($_POST['submitted'])):
 
                             echo '<div class="notification error"><p>' . __('Sorry, an error occured.', 'zerif-lite') . '</p></div>';
@@ -431,7 +431,7 @@ if (get_option('show_on_front') == 'page') {
                         endif;
                         ?>
 
-                        <form role="form" name="form-contato" method="POST" onSubmit="this.scrollPosition.value = (document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
+                        <form role="form" name="form-contato" id="form-contato" method="POST" onSubmit="this.scrollPosition.value = (document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
 
                             <input type="hidden" name="scrollPosition">
 
@@ -509,7 +509,7 @@ if (get_option('show_on_front') == 'page') {
                 var rJson = JSON.parse(data);
                 // verificar se o serviço retorna true
                 if (rJson.retorno === true) {
-                    //alert('Inserido com Sucesso!');
+                    //alert('Inserido com Sucesso!');    
                 } else {
                    // alert('Não Inserido!');
                 }
