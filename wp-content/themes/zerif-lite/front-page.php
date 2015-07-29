@@ -89,7 +89,7 @@ if (get_option('show_on_front') == 'page') {
 
 
         </div><!-- .container -->
-        <?php
+         <?php
     }else {
 
         if (isset($_POST['submitted'])) :
