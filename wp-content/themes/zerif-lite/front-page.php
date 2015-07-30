@@ -89,7 +89,7 @@ if (get_option('show_on_front') == 'page') {
 
 
         </div><!-- .container -->
-         <?php
+        <?php
     }else {
 
         if (isset($_POST['submitted'])) :
@@ -397,7 +397,7 @@ if (get_option('show_on_front') == 'page') {
                         if (isset($emailSent) && $emailSent == true) :
 
                             echo '<div class="notification success"><p>' . __('Thanks, your email was sent successfully!', 'zerif-lite') . '</p></div>';
-                                
+
                         elseif (isset($_POST['submitted'])):
 
                             echo '<div class="notification error"><p>' . __('Sorry, an error occured.', 'zerif-lite') . '</p></div>';
@@ -492,36 +492,68 @@ if (get_option('show_on_front') == 'page') {
 
                 </div> <!-- / END CONTAINER -->
 
-<script>
-    $("#enviar").click(function () {
+                <script>
 
-        $.ajax({
-            url: "/services/gravaContato.php",
-            dataType: "json",
-            type: "POST",
-            data: {'nome': $('#myname').val(),
-                'email': $('#myemail').val(),
-                'assunto': $('#mysubject').val(),
-                'mensagem': $('#mymessage').val()
-            },
-            success: function (data) {
-                // converter retorno para um objeto Json
-                var rJson = JSON.parse(data);
-                // verificar se o serviço retorna true
-                if (rJson.retorno === true) {
-                    //alert('Inserido com Sucesso!');    
-                } else {
-                   // alert('Não Inserido!');
-                }
-            },
-            error: function (data) {
-                alert('Deu Treta');
-            }
+                    $("#entrar").click(function (event) {
 
-        });
+                        event.preventDefault();
+                        $.ajax({
+                            url: "/services/validaUsuario.php",
+                            dataType: "json",
+                            type: "POST",
+                            data: {'nome': $('#nome').val(),
+                                'senha': $('#senha').val()
+                            },
+                            success: function (data) {
+                                var rJson = JSON.parse(JSON.stringify(data));
 
-    });
-</script>
+                                if (rJson.retorno === true) {
+                                    alert('Seja Bem Vindo\n Usuario Conectado:' + " " + $('#nome').val());
+                                    
+                                    $('#nome').val("");
+                                    $('#senha').val("");
+                                    $("#form-login").fadeOut('slow');
+
+                                } else {
+                                    alert('Usuário ou senha Invalidos!');
+                                }
+                            },
+                            error: function (data) {
+                                alert('TRETA');
+                            }
+                        });
+
+                    });
+                    
+                    $("#enviar").click(function () {
+
+                        $.ajax({
+                            url: "/services/gravaContato.php",
+                            dataType: "json",
+                            type: "POST",
+                            data: {'nome': $('#myname').val(),
+                                'email': $('#myemail').val(),
+                                'assunto': $('#mysubject').val(),
+                                'mensagem': $('#mymessage').val()
+                            },
+                            success: function (data) {
+                                // converter retorno para um objeto Json
+                                var rJson = JSON.parse(data);
+                                // verificar se o serviço retorna true
+                                if (rJson.retorno === true) {
+                                    //alert('Inserido com Sucesso!');    
+                                } else {
+                                    // alert('Não Inserido!');
+                                }
+                            },
+                            error: function (data) {
+                                alert('Deu Treta');
+                            }
+
+                        });
+
+                    });
+                </script>
             </section> <!-- / END CONTACT US SECTION-->       
             <?php
         endif;

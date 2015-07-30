@@ -1,0 +1,31 @@
+.login{
+    float:right;
+    margin-right: 1%;
+}
+
+.form-login{
+    margin-top:35px;
+    margin-right:1%;
+    background-color:#181717;
+    height:150px;
+    width: 200px;
+    position:relative;
+    z-index:100;
+    float:right;
+    border-radius:5px;
+    display:none;
+}
+
+.form-login input{
+    width:80% !important;
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.form-login button{
+    width:40%;
+}
+
+.login:hover {
+    color:white;
+}
