@@ -22,7 +22,7 @@ $senha = $_POST["senha"];
 
             $response = json_decode($response);
             
-            if ($response->retorno != null) {
+            if ($response->retorno != null && $response->erro == false) {
                 $retorno = true;
             } else {
                 $retorno = false;

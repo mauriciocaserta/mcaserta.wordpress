@@ -494,66 +494,66 @@ if (get_option('show_on_front') == 'page') {
 
                 <script>
 
-                    $("#entrar").click(function (event) {
+                            $("#entrar").click(function (event) {
 
-                        event.preventDefault();
-                        $.ajax({
-                            url: "/services/validaUsuario.php",
-                            dataType: "json",
-                            type: "POST",
-                            data: {'nome': $('#nome').val(),
-                                'senha': $('#senha').val()
-                            },
-                            success: function (data) {
-                                var rJson = JSON.parse(JSON.stringify(data));
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "/services/validaUsuario.php",
+                                    dataType: "json",
+                                    type: "POST",
+                                    data: {'nome': $('#nome').val(),
+                                        'senha': $('#senha').val()
+                                    },
+                                    success: function (data) {
+                                        var rJson = JSON.parse(JSON.stringify(data));
 
-                                if (rJson.retorno === true) {
-                                    alert('Seja Bem Vindo\n Usuario Conectado:' + " " + $('#nome').val());
-                                    
-                                    $('#nome').val("");
-                                    $('#senha').val("");
-                                    $("#form-login").fadeOut('slow');
+                                        if (rJson.retorno === true) {
+                                            alert('Seja Bem Vindo\n Usuario Conectado:' + " " + $('#nome').val());
 
-                                } else {
-                                    alert('Usuário ou senha Invalidos!');
-                                }
-                            },
-                            error: function (data) {
-                                alert('TRETA');
-                            }
-                        });
+                                            $('#nome').val("");
+                                            $('#senha').val("");
+                                            $("#form-login").fadeOut('slow');
 
-                    });
-                    
-                    $("#enviar").click(function () {
+                                        } else {
+                                            alert('Usuário ou senha Invalidos!');
+                                        }
+                                    },
+                                    error: function (data) {
+                                        alert('TRETA');
+                                    }
+                                });
 
-                        $.ajax({
-                            url: "/services/gravaContato.php",
-                            dataType: "json",
-                            type: "POST",
-                            data: {'nome': $('#myname').val(),
-                                'email': $('#myemail').val(),
-                                'assunto': $('#mysubject').val(),
-                                'mensagem': $('#mymessage').val()
-                            },
-                            success: function (data) {
-                                // converter retorno para um objeto Json
-                                var rJson = JSON.parse(data);
-                                // verificar se o serviço retorna true
-                                if (rJson.retorno === true) {
-                                    //alert('Inserido com Sucesso!');    
-                                } else {
-                                    // alert('Não Inserido!');
-                                }
-                            },
-                            error: function (data) {
-                                alert('Deu Treta');
-                            }
+                            });
 
-                        });
+                            $("#enviar").click(function () {
 
-                    });
-                </script>
+                                $.ajax({
+                                    url: "/services/gravaContato.php",
+                                    dataType: "json",
+                                    type: "POST",
+                                    data: {'nome': $('#myname').val(),
+                                        'email': $('#myemail').val(),
+                                        'assunto': $('#mysubject').val(),
+                                        'mensagem': $('#mymessage').val()
+                                    },
+                                    success: function (data) {
+                                        // converter retorno para um objeto Json
+                                        var rJson = JSON.parse(data);
+                                        // verificar se o serviço retorna true
+                                        if (rJson.retorno === true) {
+                                            //alert('Inserido com Sucesso!');    
+                                        } else {
+                                            // alert('Não Inserido!');
+                                        }
+                                    },
+                                    error: function (data) {
+                                        alert('Deu Treta');
+                                    }
+
+                                });
+
+                            });
+                        </script>
             </section> <!-- / END CONTACT US SECTION-->       
             <?php
         endif;
