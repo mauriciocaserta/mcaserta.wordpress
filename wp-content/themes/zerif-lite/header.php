@@ -94,22 +94,79 @@
                         <input placeholder="Senha" name="senha" id="senha" type="password"/>
 
                         <button type="button" id="entrar" class="btn btn-success">Entrar</button>
-                        <button type="reset" class="btn btn-danger">Limpar</button>
+                        <button type="reset" id="limpar" class="btn btn-danger">Limpar</button>
                     </div>
                 </form>
             </div>
 
-            <script>
-                var click = 0;
-                $("#login").click(function () {
-                    if (click < 1) {
-                        $("#form-login").fadeIn('slow');
-                        click++;
-                    } else {
-                        $("#form-login").fadeOut('slow');
-                        click = 0;
-                    }
-                });
+            <!-- MODAL CADASTRO USUARIOS -->
+            <div class="modal-cadastro modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Cadastrar Usuários</h4>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <input placeholder="Usuario" name="nome" id="nomecadastro" type="text"/><br>
+                                <input placeholder="Senha" name="senha" id="senhacadastro" type="password"/><br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button id="cadastrar" type="button" class="btn btn-primary">Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-            </script>
-            <!-- / END TOP BAR -->
+            <!-- MODAL USUARIOS -->
+            <div class="modal-usuarios modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Usuarios Cadastrados</h4>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MENU LATERAL (PAINEL DE CONTROLE) -->
+            <div id="menu-lateral" class="menu-lateral">
+                <br><br>
+                <h5>Painel de Controle<h5>
+                        <hr>
+                        <h6>Seja bem Vindo! </h6>
+                        <h1 id="nomeusuario"></h1><br>
+                        <br>
+                        <button class="btn btn-primary" data-toggle="modal" data-target=".modal-cadastro">Cadastrar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target=".modal-usuarios">Usuarios</button>
+                        <br>
+                        <button class="btn btn-sair btn-danger" id="sair">X</button>
+            </div>
+
+
+                        <!-- FIM MENU LATERAL -->
+                        <script>
+                            var click = 0;
+                            $("#login").click(function () {
+                                if (click < 1) {
+                                    $("#form-login").fadeIn('slow');
+                                    click++;
+                                } else {
+                                    $("#form-login").fadeOut('slow');
+                                    click = 0;
+                                }
+                            });
+
+                        </script>
+                        <!-- / END TOP BAR -->
