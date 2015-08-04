@@ -29,6 +29,10 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        
+        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 
         <link rel="stylesheet" href="wp-content/themes/zerif-lite/css/style.css">
         <!--[if lt IE 9]>
@@ -131,6 +135,19 @@
                         </div>
                         <form>
                             <div class="modal-body">
+                               <table id="example" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                           
+                                            <th>nome</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -152,7 +169,7 @@
                         <button class="btn btn-warning" data-toggle="modal" data-target=".modal-usuarios">Usuarios</button>
                         <br>
                         <button class="btn btn-sair btn-danger" id="sair">X</button>
-            </div>
+                        </div>
 
 
                         <!-- FIM MENU LATERAL -->

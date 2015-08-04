@@ -47,6 +47,8 @@ body{
     position:fixed;
     margin-left: 90%;
     z-index: 999;
+    display:none;
+
 }
 
 h1{
@@ -58,9 +60,8 @@ h1{
 }
 
 .btn-sair{  
-    position: fixed;
-    bottom: 0;
-    right:0;
+    margin-top:200px;
+    
     
     
     

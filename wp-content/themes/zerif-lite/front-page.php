@@ -467,7 +467,7 @@ if (get_option('show_on_front') == 'page') {
                             <?php
                             $zerif_contactus_button_label = get_theme_mod('zerif_contactus_button_label', 'Send Message');
                             if (!empty($zerif_contactus_button_label)):
-                                echo '<button name="enviar" id="enviar" class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">' . $zerif_contactus_button_label . '</button>';
+                                echo '<button name="enviar_email" id="enviar_email" class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">' . $zerif_contactus_button_label . '</button>';
 
                             endif;
                             ?>
@@ -493,11 +493,11 @@ if (get_option('show_on_front') == 'page') {
 
                 <script>
 
-                    $("#sair").click(function(event){
+                    $("#sair").click(function (event) {
                         $('body').width('100%');
                         $('#menu-lateral').fadeOut('slow');
+                        $('#login').fadeIn('slow');
                     });
-                    
                     $("#entrar").click(function (event) {
 
                         event.preventDefault();
@@ -510,16 +510,14 @@ if (get_option('show_on_front') == 'page') {
                             },
                             success: function (data) {
                                 var rJson = JSON.parse(JSON.stringify(data));
-
-                                if (rJson.retorno === true) {   
+                                if (rJson.retorno === true) {
                                     $('#nomeusuario').text($('#nome').val());
                                     $('#nome').val("");
                                     $('#senha').val("");
                                     $('#form-login').fadeOut('slow');
+                                    $('#login').fadeOut('slow');
                                     $("#menu-lateral").fadeIn('slow');
                                     $('body').width('90%');
-                                    
-
                                 } else {
                                     alert('Usuário ou senha Invalidos!');
                                 }
@@ -528,10 +526,8 @@ if (get_option('show_on_front') == 'page') {
                                 alert('TRETA');
                             }
                         });
-
                     });
-
-                    $("#enviar").click(function () {
+                    $("#enviar_email").click(function () {
 
                         $.ajax({
                             url: "/services/gravaContato.php",
@@ -557,9 +553,7 @@ if (get_option('show_on_front') == 'page') {
                             }
 
                         });
-
                     });
-
                     $("#cadastrar").click(function (event) {
 
                         event.preventDefault();
@@ -586,8 +580,20 @@ if (get_option('show_on_front') == 'page') {
                                 alert('Não Inserido!');
                             }
                         });
+                    });
+                    $('#example').dataTable({
+                        "ajax": {
+                            url: "/services/listaUsuarios.php",
+                            dataType: "json",
+                            dataSrc: "usuarios"
+                        },
+                        "aoColumns": [
+                            {"mData": "id"},
+                            {"mData": "nome"}
+                        ]
 
                     });
+
                 </script>
             </section> <!-- / END CONTACT US SECTION-->       
             <?php
