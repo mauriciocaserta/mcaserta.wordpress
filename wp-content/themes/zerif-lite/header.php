@@ -32,8 +32,10 @@
         
         <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 
+        <script type="text/javascript" src="http://cdn.datatables.net/plug-ins/1.10.7/api/fnReloadAjax.js"></script>
+        
         <link rel="stylesheet" href="wp-content/themes/zerif-lite/css/style.css">
         <!--[if lt IE 9]>
         <script src="<?php echo esc_url(get_template_directory_uri()); ?>/js/html5.js"></script>
@@ -166,7 +168,7 @@
                         <h1 id="nomeusuario"></h1><br>
                         <br>
                         <button class="btn btn-primary" data-toggle="modal" data-target=".modal-cadastro">Cadastrar</button>
-                        <button class="btn btn-warning" data-toggle="modal" data-target=".modal-usuarios">Usuarios</button>
+                        <button id="btn_usuarios" class="btn btn-warning" data-toggle="modal" data-target=".modal-usuarios">Usuarios</button>
                         <br>
                         <button class="btn btn-sair btn-danger" id="sair">X</button>
                         </div>

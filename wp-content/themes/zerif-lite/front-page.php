@@ -493,6 +493,7 @@ if (get_option('show_on_front') == 'page') {
 
                 <script>
 
+
                     $("#sair").click(function (event) {
                         $('body').width('100%');
                         $('#menu-lateral').fadeOut('slow');
@@ -581,23 +582,28 @@ if (get_option('show_on_front') == 'page') {
                             }
                         });
                     });
-                    $('#example').dataTable({
-                        "ajax": {
-                            url: "/services/listaUsuarios.php",
-                            dataType: "json",
-                            dataSrc: "usuarios"
-                        },
-                        "aoColumns": [
-                            {"mData": "id"},
-                            {"mData": "nome"}
-                        ]
 
+                    $(document).ready(function () {
+
+                        var table = $('#example').DataTable({
+                            "ajax": {
+                                url: "/services/listaUsuarios.php",
+                                dataType: "json",
+                                dataSrc: "usuarios"
+                            },
+                            "aoColumns": [
+                                {"mData": "id"},
+                                {"mData": "nome"}
+                            ]
+                        });
+                        
+                        $("#btn_usuarios").click(function(){
+                              table.ajax.reload(null, false);
+                        });
                     });
-
                 </script>
             </section> <!-- / END CONTACT US SECTION-->       
             <?php
         endif;
     }
     get_footer();
-    ?>
