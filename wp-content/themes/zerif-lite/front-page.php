@@ -589,7 +589,7 @@ if (get_option('show_on_front') == 'page') {
                     });
                 });
 
-                $(document).on(function () {
+                $(document).ready(function () {
 
                     var table = $('#example').DataTable({
                         
