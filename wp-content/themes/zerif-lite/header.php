@@ -36,6 +36,8 @@
 
         <script type="text/javascript" src="http://cdn.datatables.net/plug-ins/1.10.7/api/fnReloadAjax.js"></script>
         
+        <script type="text/javascript" src="wp-content/themes/zerif-lite/js/jquery/script.js"></script>
+        
         <link rel="stylesheet" href="wp-content/themes/zerif-lite/css/style.css">
         <!--[if lt IE 9]>
         <script src="<?php echo esc_url(get_template_directory_uri()); ?>/js/html5.js"></script>

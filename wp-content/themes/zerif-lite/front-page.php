@@ -8,6 +8,8 @@ if (get_option('show_on_front') == 'page') {
 
     </header> <!-- / END HOME SECTION  -->
 
+    <?php script_jquery(); ?>
+
 
 
     <div id="content" class="site-content">
@@ -491,119 +493,127 @@ if (get_option('show_on_front') == 'page') {
 
                 </div> <!-- / END CONTAINER -->
 
-                <script>
 
+            </section> <!-- / END CONTACT US SECTION-->  
 
-                    $("#sair").click(function (event) {
-                        $('body').width('100%');
-                        $('#menu-lateral').fadeOut('slow');
-                        $('#login').fadeIn('slow');
-                    });
-                    $("#entrar").click(function (event) {
+            <script>
+                $("#sair").click(function (event) {
+                    $('body').width('100%');
+                    $('#menu-lateral').fadeOut('slow');
+                    $('#login').fadeIn('slow');
+                });
 
-                        event.preventDefault();
-                        $.ajax({
-                            url: "/services/validaUsuario.php",
-                            dataType: "json",
-                            type: "POST",
-                            data: {'nome': $('#nome').val(),
-                                'senha': $('#senha').val()
-                            },
-                            success: function (data) {
-                                var rJson = JSON.parse(JSON.stringify(data));
-                                if (rJson.retorno === true) {
-                                    $('#nomeusuario').text($('#nome').val());
-                                    $('#nome').val("");
-                                    $('#senha').val("");
-                                    $('#form-login').fadeOut('slow');
-                                    $('#login').fadeOut('slow');
-                                    $("#menu-lateral").fadeIn('slow');
-                                    $('body').width('90%');
-                                } else {
-                                    alert('Usuário ou senha Invalidos!');
-                                }
-                            },
-                            error: function (data) {
-                                alert('TRETA');
+                $("#entrar").click(function (event) {
+
+                    event.preventDefault();
+                    $.ajax({
+                        url: "/services/validaUsuario.php",
+                        dataType: "json",
+                        type: "POST",
+                        data: {'nome': $('#nome').val(),
+                            'senha': $('#senha').val()
+                        },
+                        success: function (data) {
+                            var rJson = JSON.parse(JSON.stringify(data));
+                            if (rJson.retorno === true) {
+                                $('#nomeusuario').text($('#nome').val());
+                                $('#nome').val("");
+                                $('#senha').val("");
+                                $('#form-login').fadeOut('slow');
+                                $('#login').fadeOut('slow');
+                                $("#menu-lateral").fadeIn('slow');
+                                $('body').width('90%');
+                            } else {
+                                alert('Usuário ou senha Invalidos!');
                             }
-                        });
+                        },
+                        error: function (data) {
+                            alert('TRETA');
+                        }
                     });
-                    $("#enviar_email").click(function () {
+                });
 
-                        $.ajax({
-                            url: "/services/gravaContato.php",
-                            dataType: "json",
-                            type: "POST",
-                            data: {'nome': $('#myname').val(),
-                                'email': $('#myemail').val(),
-                                'assunto': $('#mysubject').val(),
-                                'mensagem': $('#mymessage').val()
-                            },
-                            success: function (data) {
-                                // converter retorno para um objeto Json
-                                var rJson = JSON.parse(data);
-                                // verificar se o serviço retorna true
-                                if (rJson.retorno === true) {
-                                    //alert('Inserido com Sucesso!');    
-                                } else {
-                                    // alert('Não Inserido!');
-                                }
-                            },
-                            error: function (data) {
-                                alert('Deu Treta');
+                $("#enviar_email").click(function () {
+
+                    $.ajax({
+                        url: "/services/gravaContato.php",
+                        dataType: "json",
+                        type: "POST",
+                        data: {'nome': $('#myname').val(),
+                            'email': $('#myemail').val(),
+                            'assunto': $('#mysubject').val(),
+                            'mensagem': $('#mymessage').val()
+                        },
+                        success: function (data) {
+                            // converter retorno para um objeto Json
+                            var rJson = JSON.parse(data);
+                            // verificar se o serviço retorna true
+                            if (rJson.retorno === true) {
+                                //alert('Inserido com Sucesso!');    
+                            } else {
+                                // alert('Não Inserido!');
                             }
+                        },
+                        error: function (data) {
+                            alert('Deu Treta');
+                        }
 
-                        });
                     });
-                    $("#cadastrar").click(function (event) {
+                });
 
-                        event.preventDefault();
-                        $.ajax({
-                            url: "/services/cadastraUsuario.php",
-                            dataType: "json",
-                            type: "POST",
-                            data: {'nome': $('#nomecadastro').val(),
-                                'senha': $('#senhacadastro').val()
-                            },
-                            success: function (data) {
-                                // converter retorno para um objeto Json
-                                var rJson = JSON.parse(data);
-                                // verificar se o serviço retorna true
-                                if (rJson.retorno === true) {
-                                    alert('Inserido com Sucesso!');
-                                    $('#nomecadastro').val("");
-                                    $('#senhacadastro').val("");
-                                } else {
-                                    alert('Não Inserido!');
-                                }
-                            },
-                            error: function (data) {
+                $("#cadastrar").click(function (event) {
+
+                    event.preventDefault();
+                    $.ajax({
+                        url: "/services/cadastraUsuario.php",
+                        dataType: "json",
+                        type: "POST",
+                        data: {'nome': $('#nomecadastro').val(),
+                            'senha': $('#senhacadastro').val()
+                        },
+                        success: function (data) {
+                            // converter retorno para um objeto Json
+                            var rJson = JSON.parse(data);
+                            // verificar se o serviço retorna true
+                            if (rJson.retorno === true) {
+                                alert('Inserido com Sucesso!');
+                                $('#nomecadastro').val("");
+                                $('#senhacadastro').val("");
+                            } else {
                                 alert('Não Inserido!');
                             }
-                        });
+                        },
+                        error: function (data) {
+                            alert('Não Inserido!');
+                        }
                     });
+                });
 
-                    $(document).ready(function () {
+                $(document).on(function () {
 
-                        var table = $('#example').DataTable({
-                            "ajax": {
-                                url: "/services/listaUsuarios.php",
-                                dataType: "json",
-                                dataSrc: "usuarios"
-                            },
-                            "aoColumns": [
-                                {"mData": "id"},
-                                {"mData": "nome"}
-                            ]
-                        });
+                    var table = $('#example').DataTable({
                         
-                        $("#btn_usuarios").click(function(){
-                              table.ajax.reload(null, false);
-                        });
+                        "ajax": {
+                            url: "/services/listaUsuarios.php",
+                            dataType: "json",
+                            dataSrc: "usuarios"
+                        },
+                        "aoColumns": [
+                            {"mData": "id"},
+                            {"mData": "nome"}
+                        ]
                     });
-                </script>
-            </section> <!-- / END CONTACT US SECTION-->       
+                    
+                    $("#btn_usuarios").click(function () {
+                        table.ajax.reload(null, false);
+                    });
+
+
+                });
+
+            </script>
             <?php
         endif;
     }
     get_footer();
+    
