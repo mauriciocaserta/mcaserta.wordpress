@@ -48,7 +48,6 @@ body{
     margin-left: 90%;
     z-index: 999;
     display:none;
-
 }
 
 h1{
@@ -60,9 +59,9 @@ h1{
 }
 
 .btn-sair{  
-    margin-top:200px;
-    
-    
-    
-    
+    margin-top:200px;   
+}
+
+.btn-excluir{
+    float:right;
 }

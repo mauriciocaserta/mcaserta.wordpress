@@ -36,8 +36,6 @@
 
         <script type="text/javascript" src="http://cdn.datatables.net/plug-ins/1.10.7/api/fnReloadAjax.js"></script>
         
-        <script type="text/javascript" src="wp-content/themes/zerif-lite/js/jquery/script.js"></script>
-        
         <link rel="stylesheet" href="wp-content/themes/zerif-lite/css/style.css">
         <!--[if lt IE 9]>
         <script src="<?php echo esc_url(get_template_directory_uri()); ?>/js/html5.js"></script>
@@ -85,8 +83,7 @@
 
         endif;
         ?>
-
-
+        
         <header id="home" class="header">
 
             <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
@@ -139,22 +136,20 @@
                         </div>
                         <form>
                             <div class="modal-body">
-                               <table id="example" class="display" cellspacing="0" width="100%">
+                               <table id="tabela-usuarios" class="display" cellspacing="0" width="100%">
                                     <thead>
-                                        <tr>
+                                      <tr>
+                                            
                                             <th>id</th>
                                            
                                             <th>nome</th>
                                             
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        
-                                    </tbody>
                                 </table>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                 <button id="btn_excluir" type="button" class="btn-excluir btn btn-danger">Excluir</button> 
+                                <br>
+                                <br>
                             </div>
                         </form>
                     </div>

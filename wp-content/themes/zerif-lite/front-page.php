@@ -591,8 +591,7 @@ if (get_option('show_on_front') == 'page') {
 
                 $(document).ready(function () {
 
-                    var table = $('#example').DataTable({
-                        
+                    var table = $('#tabela-usuarios').DataTable({
                         "ajax": {
                             url: "/services/listaUsuarios.php",
                             dataType: "json",
@@ -603,14 +602,47 @@ if (get_option('show_on_front') == 'page') {
                             {"mData": "nome"}
                         ]
                     });
-                    
+
+                    $('#tabela-usuarios tbody').on('click', 'tr', function () {
+                        var data = table.row(this).data();
+
+                        if ($(this).hasClass('selected')) {
+                            $(this).removeClass('selected');
+                        }
+                        else {
+                            table.$('tr.selected').removeClass('selected');
+                            $(this).addClass('selected');
+                        }
+                        
+                        $('#btn_excluir').click(function () {
+                                $.ajax({
+                                    url: "/services/deletaUsuario.php",
+                                    dataType: "json",
+                                    type: "POST",
+                                    data: {
+                                        'id': data.id
+                                    },
+                                    success: function (data) {
+                                        var rJson = JSON.parse(data);
+                                        
+                                        if (rJson.retorno === true) {
+                                            alert('Removido com Sucesso!');
+                                            table.row('.selected').remove().draw( false );
+                                        } else {
+                                            alert('Não Removido!');
+                                        }
+                                    },
+                                    error: function (data) {
+                                        alert('TRETA!');
+                                    }
+                                });
+                            });
+                    });
+
                     $("#btn_usuarios").click(function () {
                         table.ajax.reload(null, false);
                     });
-
-
                 });
-
             </script>
             <?php
         endif;
