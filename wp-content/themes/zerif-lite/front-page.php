@@ -601,10 +601,11 @@ if (get_option('show_on_front') == 'page') {
                             {"mData": "id"},
                             {"mData": "nome"}
                         ]
+
                     });
 
-                    $('#tabela-usuarios tbody').on('click', 'tr', function () {
-                        var data = table.row(this).data();
+                    $('#tabela-usuarios tbody').on('dblclick','tr', function () {
+                   
 
                         if ($(this).hasClass('selected')) {
                             $(this).removeClass('selected');
@@ -614,35 +615,39 @@ if (get_option('show_on_front') == 'page') {
                             $(this).addClass('selected');
                         }
                         
+                             var data = table.row(this).data();
+
                         $('#btn_excluir').click(function () {
-                                $.ajax({
-                                    url: "/services/deletaUsuario.php",
-                                    dataType: "json",
-                                    type: "POST",
-                                    data: {
-                                        'id': data.id
-                                    },
-                                    success: function (data) {
-                                        var rJson = JSON.parse(data);
-                                        
-                                        if (rJson.retorno === true) {
-                                            alert('Removido com Sucesso!');
-                                            table.row('.selected').remove().draw( false );
-                                        } else {
-                                            alert('Não Removido!');
-                                        }
-                                    },
-                                    error: function (data) {
-                                        alert('TRETA!');
+                            $.ajax({
+                                url: "/services/deletaUsuario.php",
+                                dataType: "json",
+                                type: "POST",
+                                data: {
+                                    'id': data.id
+                                },
+                                success: function (data) {
+                                    var rJson = JSON.parse(data);
+
+                                    if (rJson.retorno === true) {
+                                        alert('Removido com Sucesso!');
+                                        table.row('.selected').remove().draw(false);
+                                    } else {
+                                        alert('Não Removido!');
                                     }
-                                });
+                                },
+                                error: function (data) {
+                                    alert('TRETA!');
+                                }
                             });
+                        });
                     });
 
                     $("#btn_usuarios").click(function () {
                         table.ajax.reload(null, false);
                     });
                 });
+
+
             </script>
             <?php
         endif;
